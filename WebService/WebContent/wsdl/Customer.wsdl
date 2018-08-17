@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://version.project" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://version.project" xmlns:intf="http://version.project" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://version.project" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="createQuestion">
+    <complexType>
+     <sequence>
+      <element name="sessionKey" type="xsd:string"/>
+      <element name="question" type="xsd:string"/>
+      <element name="kind" type="xsd:string"/>
+      <element name="s1" type="xsd:string"/>
+      <element name="s2" type="xsd:string"/>
+      <element name="s3" type="xsd:string"/>
+      <element name="s4" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createQuestionResponse">
+    <complexType>
+     <sequence>
+      <element name="createQuestionReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="changePassword">
+    <complexType>
+     <sequence>
+      <element name="sessionKey" type="xsd:string"/>
+      <element name="newPassword" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="changePasswordResponse">
+    <complexType>
+     <sequence>
+      <element name="changePasswordReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createUser">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createUserResponse">
+    <complexType>
+     <sequence>
+      <element name="createUserReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="questionList">
+    <complexType>
+     <sequence>
+      <element name="sessionKey" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="questionListResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="questionListReturn" type="impl:QuestionInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="QuestionInfo">
+    <sequence>
+     <element name="QuestionId" type="xsd:int"/>
+     <element name="Question" nillable="true" type="xsd:string"/>
+     <element name="SectionA" nillable="true" type="xsd:string"/>
+     <element name="SectionB" nillable="true" type="xsd:string"/>
+     <element name="SectionC" nillable="true" type="xsd:string"/>
+     <element name="SectionD" nillable="true" type="xsd:string"/>
+     <element name="QuestionType" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="userLogout">
+    <complexType>
+     <sequence>
+      <element name="sessionKey" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="userLogoutResponse">
+    <complexType/>
+   </element>
+   <element name="userPassive">
+    <complexType>
+     <sequence>
+      <element name="sessionKey" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="userPassiveResponse">
+    <complexType/>
+   </element>
+   <element name="userLogin">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="userLoginResponse">
+    <complexType>
+     <sequence>
+      <element name="userLoginReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateQuestion">
+    <complexType>
+     <sequence>
+      <element name="sessionKey" type="xsd:string"/>
+      <element name="QuestionId" type="xsd:int"/>
+      <element name="nQuestion" type="xsd:string"/>
+      <element name="nkind" type="xsd:string"/>
+      <element name="ns1" type="xsd:string"/>
+      <element name="ns2" type="xsd:string"/>
+      <element name="ns3" type="xsd:string"/>
+      <element name="ns4" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateQuestionResponse">
+    <complexType>
+     <sequence>
+      <element name="updateQuestionReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createQuestionRequest">
+
+      <wsdl:part element="impl:createQuestion" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="questionListResponse">
+
+      <wsdl:part element="impl:questionListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="userPassiveRequest">
+
+      <wsdl:part element="impl:userPassive" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="userLoginRequest">
+
+      <wsdl:part element="impl:userLogin" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="userLoginResponse">
+
+      <wsdl:part element="impl:userLoginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="userLogoutResponse">
+
+      <wsdl:part element="impl:userLogoutResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createUserResponse">
+
+      <wsdl:part element="impl:createUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createQuestionResponse">
+
+      <wsdl:part element="impl:createQuestionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createUserRequest">
+
+      <wsdl:part element="impl:createUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="userLogoutRequest">
+
+      <wsdl:part element="impl:userLogout" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="userPassiveResponse">
+
+      <wsdl:part element="impl:userPassiveResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="changePasswordResponse">
+
+      <wsdl:part element="impl:changePasswordResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateQuestionRequest">
+
+      <wsdl:part element="impl:updateQuestion" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="questionListRequest">
+
+      <wsdl:part element="impl:questionList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="changePasswordRequest">
+
+      <wsdl:part element="impl:changePassword" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateQuestionResponse">
+
+      <wsdl:part element="impl:updateQuestionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Customer">
+
+      <wsdl:operation name="createQuestion">
+
+         <wsdl:input message="impl:createQuestionRequest" name="createQuestionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createQuestionResponse" name="createQuestionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changePassword">
+
+         <wsdl:input message="impl:changePasswordRequest" name="changePasswordRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:changePasswordResponse" name="changePasswordResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createUser">
+
+         <wsdl:input message="impl:createUserRequest" name="createUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createUserResponse" name="createUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="questionList">
+
+         <wsdl:input message="impl:questionListRequest" name="questionListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:questionListResponse" name="questionListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="userLogout">
+
+         <wsdl:input message="impl:userLogoutRequest" name="userLogoutRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:userLogoutResponse" name="userLogoutResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="userPassive">
+
+         <wsdl:input message="impl:userPassiveRequest" name="userPassiveRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:userPassiveResponse" name="userPassiveResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="userLogin">
+
+         <wsdl:input message="impl:userLoginRequest" name="userLoginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:userLoginResponse" name="userLoginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateQuestion">
+
+         <wsdl:input message="impl:updateQuestionRequest" name="updateQuestionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateQuestionResponse" name="updateQuestionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CustomerSoapBinding" type="impl:Customer">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createQuestion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createQuestionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createQuestionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changePassword">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="changePasswordRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="changePasswordResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="questionList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="questionListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="questionListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="userLogout">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="userLogoutRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="userLogoutResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="userPassive">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="userPassiveRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="userPassiveResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="userLogin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="userLoginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="userLoginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateQuestion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateQuestionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateQuestionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CustomerService">
+
+      <wsdl:port binding="impl:CustomerSoapBinding" name="Customer">
+
+         <wsdlsoap:address location="http://localhost:8081/TestWebService/services/Customer"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

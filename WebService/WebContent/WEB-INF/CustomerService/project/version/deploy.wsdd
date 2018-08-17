@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CustomerService WSDL service -->
+
+  <service name="Customer" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://version.project"/>
+      <parameter name="wsdlServiceElement" value="CustomerService"/>
+      <parameter name="schemaQualified" value="http://version.project"/>
+      <parameter name="wsdlServicePort" value="Customer"/>
+      <parameter name="className" value="project.version.Customer"/>
+      <parameter name="wsdlPortType" value="Customer"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://version.project" xmlns:retNS="http://version.project" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="createQuestion" qname="operNS:createQuestion" returnQName="retNS:createQuestionReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:sessionKey" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:question" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:kind" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:s1" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:s2" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:s3" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:s4" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://version.project" xmlns:retNS="http://version.project" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="changePassword" qname="operNS:changePassword" returnQName="retNS:changePasswordReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:sessionKey" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:newPassword" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://version.project" xmlns:retNS="http://version.project" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="createUser" qname="operNS:createUser" returnQName="retNS:createUserReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userName" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://version.project" xmlns:retNS="http://version.project" xmlns:rtns="http://version.project" name="questionList" qname="operNS:questionList" returnQName="retNS:questionListReturn" returnType="rtns:QuestionInfo" soapAction="">
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:sessionKey" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://version.project" name="userLogout" qname="operNS:userLogout" soapAction="">
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:sessionKey" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://version.project" name="userPassive" qname="operNS:userPassive" soapAction="">
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:sessionKey" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://version.project" xmlns:retNS="http://version.project" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="userLogin" qname="operNS:userLogin" returnQName="retNS:userLoginReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userName" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://version.project" xmlns:retNS="http://version.project" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updateQuestion" qname="operNS:updateQuestion" returnQName="retNS:updateQuestionReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:sessionKey" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:QuestionId" type="tns:int"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nQuestion" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nkind" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:ns1" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:ns2" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:ns3" type="tns:string"/>
+        <parameter xmlns:pns="http://version.project" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:ns4" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="userPassive userLogin updateQuestion createUser createQuestion questionList userLogout changePassword"/>
+
+      <typeMapping xmlns:ns="http://version.project" qname="ns:QuestionInfo" type="java:project.version.QuestionInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

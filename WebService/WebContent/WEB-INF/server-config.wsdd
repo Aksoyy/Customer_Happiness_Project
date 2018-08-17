@@ -1,0 +1,103 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\Nihal\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\TestWebService\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="Customer" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="createQuestion" qname="ns1:createQuestion" returnQName="ns1:createQuestionReturn" returnType="xsd:boolean" soapAction="" xmlns:ns1="http://version.project" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:sessionKey" type="xsd:string"/>
+   <ns2:parameter qname="ns1:question" type="xsd:string"/>
+   <ns2:parameter qname="ns1:kind" type="xsd:string"/>
+   <ns2:parameter qname="ns1:s1" type="xsd:string"/>
+   <ns2:parameter qname="ns1:s2" type="xsd:string"/>
+   <ns2:parameter qname="ns1:s3" type="xsd:string"/>
+   <ns2:parameter qname="ns1:s4" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="changePassword" qname="ns2:changePassword" returnQName="ns2:changePasswordReturn" returnType="xsd:boolean" soapAction="" xmlns:ns2="http://version.project" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:sessionKey" type="xsd:string"/>
+   <ns1:parameter qname="ns2:newPassword" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="createUser" qname="ns3:createUser" returnQName="ns3:createUserReturn" returnType="xsd:boolean" soapAction="" xmlns:ns3="http://version.project" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns3:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="questionList" qname="ns4:questionList" returnQName="ns4:questionListReturn" returnType="ns4:QuestionInfo" soapAction="" xmlns:ns4="http://version.project">
+   <ns1:parameter qname="ns4:sessionKey" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="userLogout" qname="ns5:userLogout" soapAction="" xmlns:ns5="http://version.project">
+   <ns1:parameter qname="ns5:sessionKey" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="userPassive" qname="ns6:userPassive" soapAction="" xmlns:ns6="http://version.project">
+   <ns1:parameter qname="ns6:sessionKey" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="userLogin" qname="ns7:userLogin" returnQName="ns7:userLoginReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://version.project" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns7:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="updateQuestion" qname="ns8:updateQuestion" returnQName="ns8:updateQuestionReturn" returnType="xsd:boolean" soapAction="" xmlns:ns8="http://version.project" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:sessionKey" type="xsd:string"/>
+   <ns1:parameter qname="ns8:QuestionId" type="xsd:int"/>
+   <ns1:parameter qname="ns8:nQuestion" type="xsd:string"/>
+   <ns1:parameter qname="ns8:nkind" type="xsd:string"/>
+   <ns1:parameter qname="ns8:ns1" type="xsd:string"/>
+   <ns1:parameter qname="ns8:ns2" type="xsd:string"/>
+   <ns1:parameter qname="ns8:ns3" type="xsd:string"/>
+   <ns1:parameter qname="ns8:ns4" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="userPassive userLogin updateQuestion createUser createQuestion questionList userLogout changePassword"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Customer"/>
+  <ns1:parameter name="className" value="project.version.Customer"/>
+  <ns1:parameter name="wsdlServicePort" value="Customer"/>
+  <ns1:parameter name="schemaQualified" value="http://version.project"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://version.project"/>
+  <ns1:parameter name="wsdlServiceElement" value="CustomerService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:QuestionInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:project.version.QuestionInfo" xmlns:ns9="http://version.project"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
